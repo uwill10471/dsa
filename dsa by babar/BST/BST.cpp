@@ -27,6 +27,21 @@ void inorder(Node* root){
 
 }
 
+int preorder(Node* root)
+bool preorder(Node* root,int x){
+  if (root == NULL)
+  {
+    return false;
+  }
+
+  if(root->data== x){
+    return true;
+  }  // N
+  preorder(root->left);      // L
+  preorder(root->right);     // R
+}
+
+
 void preorder(Node* root){
   if(root == NULL){
     return;
@@ -122,6 +137,7 @@ Node* maxVal(Node* root){
 int main(){
   Node* root =NULL;
   cout<<"enter data to create bst(put -1 to end to take data)"<<endl;
+
   takeInput(root);
   levelOrderTraversal(root);
  Node* min = minVal(root);
@@ -129,8 +145,20 @@ int main(){
 Node* max = maxVal(root);
   cout<<endl<<max->data;
   int x;
+  
   cout<<"enter value of x";
   cin>>x;
+  bool k = preorder(root,x);
+  if(k==1){
+    cout<<"Present";
+
+  }else{
+    cout<<"Not Present";
+  }
+
+ int height = 0;
+ int h = preorder(root,height);
+
 
   return 0;
 }
